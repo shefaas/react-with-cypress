@@ -9,7 +9,11 @@ describe("Stubbing a request and logging the intercepted request data", () => {
     cy.contains("/posts").click();
 
     cy.wait("@posts").then((interception) => {
+      // logging the whole interception
       cy.log(JSON.stringify(interception));
+
+      // accessing response body and logging specific info
+      cy.log(JSON.stringify(interception.response.body.length))
     });
   });
 });
