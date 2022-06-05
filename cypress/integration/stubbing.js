@@ -1,0 +1,16 @@
+describe('Stubbing a request and logging the intercepted request data', () => {
+    it('stubbing a request', () => {
+        cy.visit('https://jsonplaceholder.typicode.com/')
+
+        cy.intercept({
+            path: '/posts'
+        }).as('posts')
+
+        cy.contains('/posts').click()
+
+        cy.wait('@posts').then((interception) => {
+            cy.log(JSON.stringify(interception))
+        })
+    })
+
+})
