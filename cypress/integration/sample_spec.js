@@ -13,11 +13,6 @@ describe('Visit Google page', () => {
     })
 
     it('Reach Gmail page', () => {
-
-        cy.intercept('/intl').as('collect') // intercepting a call (something related to G analytics) happens when gmail page is loaded
-
         cy.url().should('include', '/gmail/about')
-
-        cy.wait('@collect')
     })
 })
