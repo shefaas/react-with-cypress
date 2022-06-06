@@ -1,3 +1,6 @@
+# Cypress Architecture
+![image info](arch.png)
+
 # Random Notes
 
 - Aliased routers can be used in the same test case, probably couldn’t be used outside it (I got errors trying to do that).
@@ -8,7 +11,10 @@
 - Within Cypress, you have the ability to choose whether to stub responses or allow them to actually hit your server. You can also mix and match within the same test by choosing to stub certain requests, while allowing others to hit your server.
   
 ## Folder Structure
-- Fixtures can be used for static data files, e.g. supplying an interception with a fixture file as a static response instead of hard coding data inside the tests.
+- **Fixtures** can be used for static data files, e.g. supplying an interception with a fixture file as a static response instead of hard coding data inside the tests. Use `cy.fixture`.
+- **Integration** folder is for our tests.
+- **Plugins** is for configurations like browser customization.
+- **Support** folder is for utility functions, modules, and wrappers. You can use them without explicit import because Cypress call them first when running the tests, so they are accessible for all specs files.
 
 ## Functions
 
