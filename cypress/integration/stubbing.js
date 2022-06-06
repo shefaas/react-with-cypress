@@ -2,12 +2,7 @@ describe("Stubbing a request and logging the intercepted request data", () => {
   it("stubbing a request", () => {
     cy.visit("https://jsonplaceholder.typicode.com/");
 
-    cy.intercept(
-      {
-        path: "/posts",
-      },
-      () => {}
-    ).as("posts");
+    cy.intercept({ path: "/posts" }, () => {}).as("posts");
 
     cy.contains("/posts").click();
 
@@ -26,22 +21,16 @@ describe("Stubbing a request and logging the intercepted request data", () => {
   it("Mocking with intercept with static response", () => {
     cy.visit("https://jsonplaceholder.typicode.com/");
 
-    cy.intercept(
-      {
-        path: "/posts",
-      },
-      (req) => {
-        req.reply({
-          body: "hello world!",
-          statusCode: 201,
-        });
-      }
-    ).as("posts");
+    cy.intercept({ path: "/posts" }, (req) => {
+      req.reply({
+        body: "hello world!",
+        statusCode: 201,
+      });
+    }).as("posts");
 
     cy.contains("/posts").click();
 
     cy.wait("@posts").then((interception) => {
-      // logging the whole interception
       cy.log(JSON.stringify(interception));
     });
   });
@@ -49,8 +38,7 @@ describe("Stubbing a request and logging the intercepted request data", () => {
   it.only("Mocking static response with dynamic fixture", () => {
     cy.visit("https://jsonplaceholder.typicode.com/");
 
-    cy.intercept( { path: "/posts", }, { fixture: "example.json" }
-    ).as("posts");
+    cy.intercept({ path: "/posts" }, { fixture: "example.json" }).as("posts");
 
     cy.contains("/posts").click();
   });
