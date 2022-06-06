@@ -23,3 +23,13 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+// to get element by selector, e.g. getBySel(submit) means get(`[data-test=submit`)
+Cypress.Commands.add('getBySel', (selector, ...args) => {
+    return cy.get(`[data-test=${selector}]`, ...args)
+  })
+
+// getBySelLike yields elements with a data-test attribute that contains a specified selector
+Cypress.Commands.add('getBySelLike', (selector, ...args) => {
+return cy.get(`[data-test*=${selector}]`, ...args)
+})

@@ -12,7 +12,8 @@
 `cy.wait('@new-user').then(console.log)`.
 
 - Within Cypress, you have the ability to choose whether to stub responses or allow them to actually hit your server. You can also mix and match within the same test by choosing to stub certain requests, while allowing others to hit your server.
-  
+
+- Use test selectors to get elements. [Best practices explained](https://docs.cypress.io/guides/references/best-practices#Selecting-Elements).
 ## Folder Structure
 - **Fixtures** can be used for static data files, e.g. supplying an interception with a fixture file as a static response instead of hard coding data inside the tests. Use `cy.fixture`.
 - **Integration** folder is for our tests.
