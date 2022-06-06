@@ -4,6 +4,13 @@ describe("Stubbing a request and logging the intercepted request data", () => {
 
     cy.intercept({
       path: "/posts",
+    }, (req) => {
+      req.reply(
+        {
+          body: "hello world!",
+          statusCode: 201,
+        }
+      )
     }).as("posts");
 
     cy.contains("/posts").click();
@@ -15,5 +22,6 @@ describe("Stubbing a request and logging the intercepted request data", () => {
       // accessing response body and logging specific info
       cy.log(JSON.stringify(interception.response.body.length))
     });
+
   });
 });
