@@ -23,7 +23,7 @@ describe("Stubbing a request and logging the intercepted request data", () => {
     });
   });
 
-  it("Mocking with intercept", () => {
+  it("Mocking with intercept with static response", () => {
     cy.visit("https://jsonplaceholder.typicode.com/");
 
     cy.intercept(
@@ -46,5 +46,12 @@ describe("Stubbing a request and logging the intercepted request data", () => {
     });
   });
 
+  it.only("Mocking static response with dynamic fixture", () => {
+    cy.visit("https://jsonplaceholder.typicode.com/");
 
+    cy.intercept( { path: "/posts", }, { fixture: "example.json" }
+    ).as("posts");
+
+    cy.contains("/posts").click();
+  });
 });
