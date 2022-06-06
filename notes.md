@@ -1,6 +1,9 @@
 # Cypress Architecture
 ![image info](arch.png)
 
+# Course
+[Cypress - JavaScript End to End Testing Tools - By Naveen AutomationLabs](https://www.youtube.com/playlist?list=PLFGoYjJG_fqoxTBJAUYw_poyBh0DI78HV)
+
 # Random Notes
 
 - Aliased routers can be used in the same test case, probably couldn’t be used outside it (I got errors trying to do that).
